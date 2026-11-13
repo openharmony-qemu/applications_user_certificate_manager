@@ -1,0 +1,6 @@
+{
+  "string": [
+    {"name": "ca_uninstall_title", "value": "删除 CA 证书"},
+    {"name": "ca_uninstall_warning", "value": "删除此证书可能导致依赖它的网络连接失败。请核对证书后再删除。"}
+  ]
+}

@@ -16,9 +16,7 @@
 {
   "modelVersion": "6.0.0",
   "license": "",
-  "devDependencies": {
-    "@ohos/hypium": "1.0.11"
-  },
+  "devDependencies": {},
   "author": "",
   "name": "security_privacy_center",
   "description": "Please describe the basic information.",

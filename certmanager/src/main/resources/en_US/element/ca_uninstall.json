@@ -1,0 +1,6 @@
+{
+  "string": [
+    {"name": "ca_uninstall_title", "value": "Remove CA certificate"},
+    {"name": "ca_uninstall_warning", "value": "Removing this certificate may prevent dependent network connections. Check the certificate before removing it."}
+  ]
+}

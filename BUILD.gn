@@ -13,10 +13,7 @@
 import("//build/ohos.gni")
 
 ohos_app("user_cert_manager") {
-  deps = [
-    ":cert_manager_js_assets",
-    ":cert_manager_resources",
-  ]
+  deps = []
   publicity_file = "publicity.xml"
   certificate_profile = "signature/privacyCenter.p7b"
   hap_name = "CertificateManager"
@@ -29,20 +26,4 @@ ohos_app("user_cert_manager") {
   assemble_type = "assembleHap"
   build_level = "module"
   build_modules = [ "CertManager" ]
-}
-
-ohos_app_scope("user_cert_manager_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("cert_manager_js_assets") {
-  ets2abc = true
-  source_dir = "certmanager/src/main/ets"
-}
-
-ohos_resources("cert_manager_resources") {
-  sources = [ "certmanager/src/main/resources" ]
-  deps = [ ":user_cert_manager_app_profile" ]
-  hap_profile = "certmanager/src/main/module.json"
 }

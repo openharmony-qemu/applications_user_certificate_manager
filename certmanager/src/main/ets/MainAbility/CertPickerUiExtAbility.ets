@@ -19,6 +19,7 @@ import { GlobalContext, PwdStore } from '../common/GlobalContext';
 import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility';
 import { BusinessError } from '@ohos.base';
 import Logger from '../common/util/Logger';
+import { CmDialogOperationType } from '../model/CertMangerModel';
 
 const logger: Logger = new Logger('CertPickerUiExtAbility');
 const PAGE_CA_INSTALL = 5;
@@ -47,7 +48,9 @@ export default class CertPickerUiExtAbility extends UIExtensionAbility {
     }
     let storage: LocalStorage = new LocalStorage(param);
     try {
-      if (this.isStartToInstall(want.parameters)) {
+      if (this.isStartToUninstall(want.parameters)) {
+        session.loadContent('pages/CertificateUninstallPage', storage);
+      } else if (this.isStartToInstall(want.parameters)) {
         session.loadContent('pages/CertificateInstallPage', storage);
       } else if (this.isStartToAuthorize(want.parameters)) {
         session.loadContent('pages/RequestAuthSheet', storage);
@@ -71,6 +74,11 @@ export default class CertPickerUiExtAbility extends UIExtensionAbility {
     } catch (err) {
       logger.error('CertPickerUiExtAbility setWindowBackgroundColor');
     }
+  }
+
+  private isStartToUninstall(parameters: Record<string, Object> | undefined): boolean {
+    return parameters?.['pageType'] === PAGE_CA_INSTALL &&
+      parameters?.['operationType'] === CmDialogOperationType.UNINSTALL;
   }
 
   private isStartToInstall(parameters: Record<string, Object> | undefined): boolean {

@@ -106,6 +106,7 @@ export class CheckUserAuthModel {
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       logger.error(`auth catch error. code is ${err?.code}, message is ${err?.message}`);
+      callback(false);
     }
   }
 }
